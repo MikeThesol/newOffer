@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>newOffer</title>
-    <link type="text/html" rel="icon" href="images/icoMoney.ico">
+    <link type="text/html" rel="icon" href="/images/icoMoney.ico">
 </head>
 <body>
 <a href="/" ><img src="/images/moneyIcon64.png"> home</a> |

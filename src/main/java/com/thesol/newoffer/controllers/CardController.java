@@ -24,12 +24,14 @@ public class CardController {
     private final CardService cardService;
     private final LanguageService languageService;
     private final VideoService videoService;
+    private final CardRepository cardRepository;
 
     @GetMapping("/language/{name}")
     public String cardSelection(@PathVariable String name, Model model) {
         model.addAttribute("cards", cardService.findByLanguage(languageService.getLanguageByName(name)));
         return "cards-page";
     }
+
 
     @GetMapping("/card/{id}")
     public String card(@PathVariable Long id, Model model) {
@@ -58,6 +60,18 @@ public class CardController {
         card.setLanguage(language);
 
         cardService.save(card);
+        return "redirect:/";
+    }
+
+    @GetMapping("/change/card")
+    public String redCard(){
+        return "red-card";
+    }
+
+    @PostMapping("/change/card")
+    public String updateCard(@RequestParam("card_id") long id,
+                             @RequestParam("description") String description) {
+        cardRepository.updateDescriptionById(id, description);
         return "redirect:/";
     }
 

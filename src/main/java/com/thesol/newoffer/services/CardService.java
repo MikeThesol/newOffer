@@ -27,5 +27,4 @@ public class CardService {
         return cardRepository.findByLanguage(language);
     }
 
-
 }
