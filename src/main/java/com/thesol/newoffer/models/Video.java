@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,7 +30,7 @@ public class Video {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "grades", joinColumns = @JoinColumn(name = "video_id"))
     @Enumerated(EnumType.STRING)
-    private Set<Grade> grades;
+    private Set<Grade> grades = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -36,5 +38,5 @@ public class Video {
             joinColumns = @JoinColumn(name = "video_id"),
             inverseJoinColumns = @JoinColumn(name = "card_id")
     )
-    private List<Card> cards;
+    private List<Card> cards = new ArrayList<>();
 }

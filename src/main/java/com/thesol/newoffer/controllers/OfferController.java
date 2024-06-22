@@ -11,10 +11,4 @@ public class OfferController {
         return "about";
     }
 
-    @GetMapping("/interview")
-    public String interview() {
-        return "interviews";
-    }
-
-
 }

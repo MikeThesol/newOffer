@@ -8,6 +8,8 @@
 <a href="/" ><img src="/images/moneyIcon64.png"> home</a> |
 <a href="/interview">Собеседования</a> |
 <a href="/about">о нас</a><br><br><br>
-<h1>Скоро добавим базу интервью</h1>
+<#list videos as video>
+    <a href="${video.url}">${video.post}</a>
+</#list>
 </body>
 </html>

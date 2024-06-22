@@ -7,6 +7,7 @@ import com.thesol.newoffer.models.enums.Grade;
 import com.thesol.newoffer.repositories.CardRepository;
 import com.thesol.newoffer.services.CardService;
 import com.thesol.newoffer.services.LanguageService;
+import com.thesol.newoffer.services.VideoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import java.util.Arrays;
 public class CardController {
     private final CardService cardService;
     private final LanguageService languageService;
+    private final VideoService videoService;
 
     @GetMapping("/language/{name}")
     public String cardSelection(@PathVariable String name, Model model) {
@@ -32,6 +34,7 @@ public class CardController {
     @GetMapping("/card/{id}")
     public String card(@PathVariable Long id, Model model) {
         model.addAttribute("card", cardService.findCardById(id));
+        model.addAttribute("videos", videoService.listVideosByCard(id));
         return "card-answer";
     }
 
